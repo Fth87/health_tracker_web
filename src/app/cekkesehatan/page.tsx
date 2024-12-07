@@ -66,7 +66,7 @@ const Page: React.FC = () => {
     start.setHours(formData.sleepStart.hour, formData.sleepStart.minute, 0, 0);
     const end = new Date();
     end.setHours(formData.sleepEnd.hour, formData.sleepEnd.minute, 0, 0);
-    let duration = (end.getTime() - start.getTime()) / (1000 * 60 * 60);
+    const duration = (end.getTime() - start.getTime()) / (1000 * 60 * 60);
     return duration < 0 ? duration + 24 : duration;
   };
 
@@ -80,7 +80,18 @@ const Page: React.FC = () => {
     return 'text-red-500';
   };
 
-  const handleChange = (field: keyof typeof formData, value: any) => {
+  interface FormData {
+    date: Date;
+    gender: string;
+    height: string;
+    weight: string;
+    water: string;
+    activity: number;
+    sleepStart: Time;
+    sleepEnd: Time;
+  }
+
+  const handleChange = (field: keyof FormData, value: string | number | Date | Time): void => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 

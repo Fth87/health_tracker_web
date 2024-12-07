@@ -19,7 +19,11 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({ className, classNames }) => 
   const isSSR = useIsSSR();
 
   const onChange = () => {
-    theme === 'light' ? setTheme('dark') : setTheme('light');
+    if (theme === 'light') {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
   };
 
   const { Component, slots, isSelected, getBaseProps, getInputProps, getWrapperProps } = useSwitch({
@@ -31,7 +35,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({ className, classNames }) => 
   return (
     <Component
       {...getBaseProps({
-        className: clsx('px-px transition-opacity hover:opacity-80 cursor-pointer', className, classNames?.base),
+        className: clsx('px-px transition-opacity hover:opacity-80 cursor-pointer', className, classNames?.base || ''),
       })}
     >
       <VisuallyHidden>
@@ -40,10 +44,10 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({ className, classNames }) => 
       <div
         {...getWrapperProps()}
         className={slots.wrapper({
-          class: clsx(['w-auto h-auto', 'bg-transparent', 'rounded-lg', 'flex items-center justify-center', 'group-data-[selected=true]:bg-transparent', '!text-default-500', 'pt-px', 'px-0', 'mx-0'], classNames?.wrapper),
+          class: clsx(['w-auto h-auto', 'bg-transparent', 'rounded-lg', 'flex items-center justify-center', 'group-data-[selected=true]:bg-transparent', '!text-default-500', 'pt-px', 'px-0', 'mx-0'], classNames?.wrapper || ''),
         })}
       >
-        {!isSelected || isSSR ? <SunFilledIcon size={22} /> : <MoonFilledIcon size={22} />}
+        {(!isSelected || isSSR) ? <SunFilledIcon size={22} /> : <MoonFilledIcon size={22} />}
       </div>
     </Component>
   );
