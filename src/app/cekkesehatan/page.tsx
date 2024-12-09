@@ -154,7 +154,6 @@ const Page: React.FC = () => {
             <DatePicker showMonthAndYearPickers isRequired onChange={(date) => handleChange('date', new Date(date.year, date.month - 1, date.day))} label="Tanggal lahir" placeholderValue={new CalendarDate(2006, 9, 8)} labelPlacement="outside" />
             <Input isRequired type="number" onChange={(e) => handleChange('height', e.target.value)} label="Tinggi badan (cm)" placeholder="Tinggi badan" labelPlacement="outside" />
             <Input isRequired type="number" onChange={(e) => handleChange('weight', e.target.value)} label="Berat badan (kg)" placeholder="Berat badan" labelPlacement="outside" />
-            <Input isRequired type="number" onChange={(e) => handleChange('water', e.target.value)} label="Air minum (ml)" placeholder="Jumlah total air minum hari ini" labelPlacement="outside" />
             <Select isRequired onChange={(e) => handleChange('gender', e.target.value)} placeholder="Select gender" label="Pilih jenis kelamin" labelPlacement="outside">
               <SelectItem key="laki-laki" startContent={<MdMan4 className="w-6 h-6" />}>
                 Laki-laki
@@ -187,7 +186,7 @@ const Page: React.FC = () => {
             <p className="text-lg mt-4">TDEE : {data.TDEE}</p>
             <p className="text-lg mt-4">Durasi Tidur : {data.Sleep_Duration} Jam</p>
             <p className="text-lg mt-4">
-              Air Minum : {formData.water} ml / {data.Water_recommendation} ml
+              Kebutuhan Air Minum per hari : {data.Water_recommendation} ml
             </p>
             <Divider className="mt-4" />
             <p className="text-lg mt-4">Saran kesehatan dari kami :</p>
