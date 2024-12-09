@@ -151,7 +151,7 @@ const Page: React.FC = () => {
       <div className="w-full px-6 mt-4">
         <form onSubmit={handleSubmit}>
           <div className="gap-6 flex flex-col md:grid md:grid-cols-3">
-            <DatePicker isRequired onChange={(date) => handleChange('date', new Date(date.year, date.month - 1, date.day))} label="Tanggal lahir" placeholderValue={new CalendarDate(2006, 9, 8)} labelPlacement="outside" />
+            <DatePicker showMonthAndYearPickers isRequired onChange={(date) => handleChange('date', new Date(date.year, date.month - 1, date.day))} label="Tanggal lahir" placeholderValue={new CalendarDate(2006, 9, 8)} labelPlacement="outside" />
             <Input isRequired type="number" onChange={(e) => handleChange('height', e.target.value)} label="Tinggi badan (cm)" placeholder="Tinggi badan" labelPlacement="outside" />
             <Input isRequired type="number" onChange={(e) => handleChange('weight', e.target.value)} label="Berat badan (kg)" placeholder="Berat badan" labelPlacement="outside" />
             <Input isRequired type="number" onChange={(e) => handleChange('water', e.target.value)} label="Air minum (ml)" placeholder="Jumlah total air minum hari ini" labelPlacement="outside" />
