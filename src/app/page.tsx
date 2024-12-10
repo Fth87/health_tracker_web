@@ -17,7 +17,7 @@ export default function Home() {
       title: 'Sorting Laptop',
       image: 'https://i.pinimg.com/736x/f8/38/1e/f8381e0836109a33b27bb9ad785dc4f9.jpg',
       desc: 'Coming Soon',
-      link: '/',
+      link: '/sortinglaptop',
       icon: ImFire,
     },
   ];

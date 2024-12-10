@@ -13,7 +13,7 @@ export default {
         foreground: 'var(--foreground)',
       },
     },
-  },
+},
   darkMode: 'class',
-  plugins: [nextui()],
+  plugins: [nextui(), require("tailwindcss-animate")],
 } satisfies Config;

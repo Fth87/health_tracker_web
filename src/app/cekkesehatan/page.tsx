@@ -100,13 +100,16 @@ const Page: React.FC = () => {
     setSubmit(true);
     runAI();
     setBmiValue(calculateBmi());
-    console.log({
-      BMR: calculateBmr().toFixed(2),
-      BMI: calculateBmi().toFixed(2),
-      TDEE: calculateTdee().toFixed(2),
-      Sleep_Duration: calculateSleepDuration().toFixed(),
-      Water_recommendation: calculateWater(),
-    },formData);
+    console.log(
+      {
+        BMR: calculateBmr().toFixed(2),
+        BMI: calculateBmi().toFixed(2),
+        TDEE: calculateTdee().toFixed(2),
+        Sleep_Duration: calculateSleepDuration().toFixed(),
+        Water_recommendation: calculateWater(),
+      },
+      formData
+    );
   };
 
   const data = {
@@ -139,7 +142,7 @@ const Page: React.FC = () => {
   `;
 
   return (
-    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 bg-neutral-50 dark:bg-neutral-900 rounded-lg">
+    <section className="mt-16 flex flex-col items-center justify-center gap-4 py-8 md:py-10 bg-neutral-50 dark:bg-neutral-900 rounded-lg">
       <Link href="/" className="self-start ml-6">
         <IoMdArrowBack className="w-6 h-6 text-white" />
       </Link>
@@ -151,7 +154,14 @@ const Page: React.FC = () => {
       <div className="w-full px-6 mt-4">
         <form onSubmit={handleSubmit}>
           <div className="gap-6 flex flex-col md:grid md:grid-cols-3">
-            <DatePicker showMonthAndYearPickers isRequired onChange={(date) => handleChange('date', new Date(date.year, date.month - 1, date.day))} label="Tanggal lahir" placeholderValue={new CalendarDate(2006, 9, 8)} labelPlacement="outside" />
+            <DatePicker
+              showMonthAndYearPickers
+              isRequired
+              onChange={(date) => handleChange('date', new Date(date.year, date.month - 1, date.day))}
+              label="Tanggal lahir"
+              placeholderValue={new CalendarDate(2006, 9, 8)}
+              labelPlacement="outside"
+            />
             <Input isRequired type="number" onChange={(e) => handleChange('height', e.target.value)} label="Tinggi badan (cm)" placeholder="Tinggi badan" labelPlacement="outside" />
             <Input isRequired type="number" onChange={(e) => handleChange('weight', e.target.value)} label="Berat badan (kg)" placeholder="Berat badan" labelPlacement="outside" />
             <Select isRequired onChange={(e) => handleChange('gender', e.target.value)} placeholder="Select gender" label="Pilih jenis kelamin" labelPlacement="outside">
@@ -185,9 +195,8 @@ const Page: React.FC = () => {
             <p className="text-lg mt-4">BMR : {data.BMR}</p>
             <p className="text-lg mt-4">TDEE : {data.TDEE}</p>
             <p className="text-lg mt-4">Durasi Tidur : {data.Sleep_Duration} Jam</p>
-            <p className="text-lg mt-4">
-              Kebutuhan Air Minum per hari : {data.Water_recommendation} ml
-            </p>
+            <p className="text-lg mt-4">Kebutuhan Air Minum per hari : {data.Water_recommendation} ml</p>
+
             <Divider className="mt-4" />
             <p className="text-lg mt-4">Saran kesehatan dari kami :</p>
             <div>{gemini ? <Markdown className="mt-3 leading-relaxed">{gemini}</Markdown> : <CircularProgress className="mx-auto" aria-label="Loading..." />}</div>
